@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <title>Gainz App</title>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1>Plan</h1>
+      </header>
+      <!-- Form -->
+      <section class="form">
+        <h2>Add Workout</h2>
+        <!-- Form to add new to do item -->
+        <form action="/addWorkout" method="POST">
+          <input type="text" placeholder="Name of workout" name="name" />
+          <input type="text" placeholder="Sets" name="sets" />
+          <input type="text" placeholder="Reps" name="reps" />
+          <div>
+            <label for="days">Add To Day: </label>
+            <select name="days" id="days" required>
+              <option value="sunday">Sunday</option>
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <!-- Workout Days -->
+      <section>
+        <h2>Sunday</h2>
+      </section>
+      <section>
+        <h2>Monday</h2>
+      </section>
+      <section>
+        <h2>Tuesday</h2>
+      </section>
+      <section>
+        <h2>Wednesday</h2>
+      </section>
+      <section>
+        <h2>Thursday</h2>
+      </section>
+      <section>
+        <h2>Friday</h2>
+      </section>
+      <section>
+        <h2>Saturday</h2>
+      </section>
+    </main>
+  </body>
+</html>
