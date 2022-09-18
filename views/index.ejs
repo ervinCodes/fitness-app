@@ -1,10 +1,43 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-  <div class="row justify-content-around mt-5">
-    <a href="/login" class="col-3 btn btn-primary"> Login</a>
-    <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
+<div
+  class="container d-flex flex-column justify-content-center align-items-center loginSection"
+>
+  <div class="row text-white pb-5">
+    <h1><i>Build Strength Here</i></h1>
   </div>
-</main>
+  <div class="loginContainer row">
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+    el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %>
+    <form action="/login" method="POST" class="form-1">
+      <h1 class="text-center">
+        <span class="log-in-text">Log in</span> or
+        <span class="sign-up-text">sign up</span>
+      </h1>
+      <div class="field text-center">
+        <label for="username" class="label-1"> </label>
+        <i class="fa-sharp fa-solid fa-user"></i>
+        <input type="email" name="email" placeholder="Email" />
+      </div>
+      <div class="field text-center pb-3">
+        <label for="password" class="label-2"></label>
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" />
+      </div>
+      <div class="text-center">
+        <button type="submit" type="button" class="btn btn-secondary">
+          Login
+        </button>
+        <button href="/signup" type="button" class="btn btn-secondary">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <%- include('partials/footer') -%>
