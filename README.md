@@ -24,6 +24,11 @@ Users should be able to:
 - Login and have access to their previously stored information.
 - Access a libary of different workouts to add to their schedule.
 
+To test app:
+
+email: test@test.com
+pw: testing123
+
 ### Screenshot
 
 **In Production...**

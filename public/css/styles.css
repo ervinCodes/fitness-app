@@ -5,6 +5,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* font-family: 'Roboto', sans-serif; */
+
 /* Box Model Hack */
 * {
   box-sizing: border-box;
@@ -69,12 +72,16 @@ section {
 }
 
 /******************************************
-/* LOGIN AND SIGNUP FORM
+/* LOGIN AND SIGNUP
 /*******************************************/
 
 .loginSection {
   height: 75.8vh;
   /* border: 1px solid blue; */
+}
+
+.signupSection {
+  height: 75.8vh;
 }
 
 .loginContainer {
@@ -131,13 +138,6 @@ section {
   padding-left: 2px;
 }
 
-/* .form-1 .field {
-  flex-wrap: nowrap;
-  position: relative;
-  width: 100%;
-  height: auto;
-} */
-
 .form-1 .field {
   /* Size and position */
   padding: none;
@@ -154,10 +154,29 @@ section {
   pointer-events: none; */
 }
 
+.form-2 {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 8px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/******************************************
+/* PROFILE
+/*******************************************/
+.profileSection {
+  height: 75.8vh;
+}
+
+.profile-buttons {
+  color: #AABB8;
+}
+
 /******************************************
 /* OTHER STYLES
 /*******************************************/
 
-h1 {
+h2 {
   font-family: "Lato", sans-serif;
 }

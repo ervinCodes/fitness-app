@@ -1,0 +1,37 @@
+<%- include('partials/header') -%>
+
+<div class="container d-flex justify-content-end">
+  <a class="text-white" href="/logout">Logout</a>
+</div>
+<div
+  class="container d-flex justify-content-center align-items-center profileSection"
+>
+  <div class="row d-flex flex-column align-items-center">
+    <h1 class="text-white">Welcome <%= user.userName %>.</h1>
+    <div class="row">
+      <button
+        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+      >
+        <i class="fa-solid fa-pencil pt-1"></i>
+        Plan Your Week
+        <i class="fa-solid fa-chevron-right pt-1"></i>
+      </button>
+      <button
+        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+      >
+        <i class="fa-solid fa-bolt-lightning pt-1"></i>
+        Start Next Workout
+        <i class="fa-solid fa-chevron-right pt-1"></i>
+      </button>
+      <button
+        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+      >
+        <i class="fa-solid fa-calendar pt-1"></i>
+        Diary
+        <i class="fa-solid fa-chevron-right pt-1"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
