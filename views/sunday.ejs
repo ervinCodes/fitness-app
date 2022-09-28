@@ -1,0 +1,128 @@
+<%- include('partials/header') -%>
+
+<div class="container d-flex justify-content-end">
+  <a class="text-white" href="/logout">Logout</a>
+</div>
+
+<div class="container sundaySection">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h2 class="text-white">
+        <i>Sunday</i>
+      </h2>
+    </div>
+  </div>
+  <!-- <div class="row d-flex justify-content-center">
+    <a class="btn btn-secondary add-workout-button" href="#" role="button"
+      >Add New Workout</a
+    >
+  </div> -->
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModalCenter"
+  >
+    Add Workout
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add Workout</h5>
+        </div>
+        <div class="modal-body">
+          <!-- Form -->
+          <form
+            action="/post/createSundayWorkout"
+            enctype="multipart/form-data"
+            method="POST"
+          >
+            <div class="row mb-3 d-flex justify-content-center">
+              <div class="col-10">
+                <label for="title" class="form-label">Workout</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                />
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-5 form-group mb-3">
+                <label for="sets">Sets</label>
+                <select class="form-control" id="sets">
+                  <option>1-2</option>
+                  <option>2-3</option>
+                  <option>3-4</option>
+                  <option>4-5</option>
+                  <option>5-6</option>
+                </select>
+              </div>
+              <!-- Repts -->
+              <div class="col-5 form-group mb-3">
+                <label for="reps">Reps</label>
+                <select class="form-control" id="reps">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6-8</option>
+                  <option>8-10</option>
+                  <option>8-12</option>
+                  <option>10-12</option>
+                  <option>10-15</option>
+                  <option>15-20</option>
+                </select>
+              </div>
+            </div>
+            <!-- Sets -->
+
+            <!-- <div class="mb-3">
+          <label for="caption" class="form-label">Caption</label>
+          <textarea
+            class="form-control"
+            id="caption"
+            name="caption"
+          ></textarea>
+        </div> -->
+            <!-- <div class="mb-3">
+          <label for="imgUpload" class="form-label">Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="imageUpload"
+            name="file"
+          />
+        </div> -->
+            <!-- <button type="submit" class="btn btn-primary" value="Upload">
+          Submit
+        </button> -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

@@ -43,23 +43,8 @@ body {
   object-fit: cover;
 }
 
-.plan {
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid black;
-  text-align: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
 section {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 /******************************************
@@ -159,7 +144,7 @@ section {
   font-weight: bold;
   color: white;
   padding-bottom: 8px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  /* box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); */
 }
 
 /******************************************
@@ -171,6 +156,38 @@ section {
 
 .profile-buttons {
   color: #AABB8;
+  width: 366px;
+}
+
+/******************************************
+/* PLAN
+/*******************************************/
+.planSection {
+  height: 75.8vh;
+  /* border: solid white 1px; */
+}
+
+.row {
+  border: solid yellow 1px;
+}
+
+.col-10,
+.col-2 {
+  /* border: solid red 1px; */
+}
+
+.plan-rows {
+  background-color: #29648a;
+  border: solid 1px black;
+}
+
+/******************************************
+/* SUNDAY
+/*******************************************/
+
+.sundaySection {
+  height: 75.8vh;
+  border: solid 1px white;
 }
 
 /******************************************
@@ -179,4 +196,16 @@ section {
 
 h2 {
   font-family: "Lato", sans-serif;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.add-workout-button {
+  width: 175px;
 }

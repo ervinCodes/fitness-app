@@ -4,32 +4,42 @@
   <a class="text-white" href="/logout">Logout</a>
 </div>
 <div
-  class="container d-flex justify-content-center align-items-center profileSection"
+  class="container d-flex justify-content-center flex-column align-items-center profileSection"
 >
+  <div class="row text-white pb-5">
+    <h2><i>Welcome <%= user.userName %></i></h2>
+  </div>
   <div class="row d-flex flex-column align-items-center">
-    <h1 class="text-white">Welcome <%= user.userName %>.</h1>
     <div class="row">
-      <button
-        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
-      >
-        <i class="fa-solid fa-pencil pt-1"></i>
-        Plan Your Week
-        <i class="fa-solid fa-chevron-right pt-1"></i>
-      </button>
-      <button
-        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
-      >
-        <i class="fa-solid fa-bolt-lightning pt-1"></i>
-        Start Next Workout
-        <i class="fa-solid fa-chevron-right pt-1"></i>
-      </button>
-      <button
-        class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
-      >
-        <i class="fa-solid fa-calendar pt-1"></i>
-        Diary
-        <i class="fa-solid fa-chevron-right pt-1"></i>
-      </button>
+      <a href="/plan" class="d-flex justify-content-center">
+        <button
+          class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+        >
+          <i class="fa-solid fa-pencil pt-1"></i>
+          Plan Your Week
+          <i class="fa-solid fa-chevron-right pt-1"></i>
+        </button>
+      </a>
+
+      <a href="" class="d-flex justify-content-center">
+        <button
+          class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+        >
+          <i class="fa-solid fa-bolt-lightning pt-1"></i>
+          Start Next Workout
+          <i class="fa-solid fa-chevron-right pt-1"></i>
+        </button>
+      </a>
+
+      <a href="" class="d-flex justify-content-center">
+        <button
+          class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+        >
+          <i class="fa-solid fa-calendar pt-1"></i>
+          Diary
+          <i class="fa-solid fa-chevron-right pt-1"></i>
+        </button>
+      </a>
     </div>
   </div>
 </div>

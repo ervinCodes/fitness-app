@@ -1,57 +1,87 @@
 <%- include('partials/header') -%>
 
-    <main class="plan">
-      <!-- Header -->
-      <header class="header">
-        <h1>Plan</h1>
-      </header>
-      <!-- Form -->
-      <!-- <section class="form">
-        <h2>Add Workout</h2>
-        <form action="/addWorkout" method="POST">
-          <input type="text" placeholder="Name of workout" name="name" />
-          <input type="text" placeholder="Sets" name="sets" />
-          <input type="text" placeholder="Reps" name="reps" />
-          <div>
-            <label for="days">Add To Day: </label>
-            <select name="days" id="days" required>
-              <option value="sunday">Sunday</option>
-              <option value="monday">Monday</option>
-              <option value="tuesday">Tuesday</option>
-              <option value="wednesday">Wednesday</option>
-              <option value="thursday">Thursday</option>
-              <option value="friday">Friday</option>
-              <option value="saturday">Saturday</option>
-            </select>
-          </div>
+<div class="container d-flex justify-content-end">
+  <a class="text-white" href="/logout">Logout</a>
+</div>
 
-          <button type="submit">Submit</button>
-        </form>
-      </section> -->
-      <!-- Workout Days -->
-      <section>
-        <h2>Sunday</h2>
-      </section>
-      <section>
-        <h2>Monday</h2>
-      </section>
-      <section>
-        <h2>Tuesday</h2>
-      </section>
-      <section>
-        <h2>Wednesday</h2>
-      </section>
-      <section>
-        <h2>Thursday</h2>
-      </section>
-      <section>
-        <h2>Friday</h2>
-      </section>
-      <section>
-        <h2>Saturday</h2>
-      </section>
-    </main>
-  </body>
-</html>
+<div class="container planSection">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h2 class="text-white">
+        <i>Plan</i>
+      </h2>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Sunday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/sunday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Monday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/monday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Tuesday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/tuesday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Wednesday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/wednesday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Thursday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/thursday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Friday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/friday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row plan-rows">
+    <div class="col-10 align-items-center p-4">
+      <div class="text-white">Saturday</div>
+    </div>
+    <div class="col-2 d-flex align-items-center">
+      <a href="/saturday">
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') -%>
