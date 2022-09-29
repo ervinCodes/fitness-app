@@ -91,6 +91,7 @@ module.exports = {
     }
   },
   createSundayWorkout: async (req, res) => {
+    console.log(req.body);
     try {
       await Workout.create({
         title: req.body.title,
@@ -98,7 +99,8 @@ module.exports = {
         reps: req.body.reps,
         weight: req.body.weight,
         personalRecord: req.body.personalRecord,
-        user: req.user.id,
+        userId: req.user.id,
+        completed: false,
         isSunday: true,
         isMonday: false,
         isTuesday: false,

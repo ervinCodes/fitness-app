@@ -31,6 +31,10 @@ const WorkoutSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  completed: {
+    type: Boolean,
+    required: true,
+  },
   isSunday: {
     type: Boolean,
     required: true,

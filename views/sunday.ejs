@@ -43,12 +43,9 @@
         </div>
         <div class="modal-body">
           <!-- Form -->
-          <form
-            action="/post/createSundayWorkout"
-            enctype="multipart/form-data"
-            method="POST"
-          >
+          <form action="/post/createSundayWorkout" method="POST">
             <div class="row mb-3 d-flex justify-content-center">
+              <!-- Workout Title -->
               <div class="col-10">
                 <label for="title" class="form-label">Workout</label>
                 <input
@@ -60,35 +57,39 @@
               </div>
             </div>
             <div class="row d-flex justify-content-center">
+              <!-- Sets -->
               <div class="col-5 form-group mb-3">
-                <label for="sets">Sets</label>
-                <select class="form-control" id="sets">
-                  <option>1-2</option>
-                  <option>2-3</option>
-                  <option>3-4</option>
-                  <option>4-5</option>
-                  <option>5-6</option>
-                </select>
+                <label for="sets" class="form-label">Sets</label>
+                <input type="text" class="form-control" id="sets" name="sets" />
               </div>
               <!-- Repts -->
               <div class="col-5 form-group mb-3">
-                <label for="reps">Reps</label>
-                <select class="form-control" id="reps">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6-8</option>
-                  <option>8-10</option>
-                  <option>8-12</option>
-                  <option>10-12</option>
-                  <option>10-15</option>
-                  <option>15-20</option>
-                </select>
+                <label for="reps" class="form-label">Reps</label>
+                <input type="text" class="form-control" id="reps" name="reps" />
               </div>
             </div>
-            <!-- Sets -->
+            <div class="row d-flex justify-content-center">
+              <!-- Weight -->
+              <div class="col-5 form-group mb-3">
+                <label for="weight" class="form-label">Weight</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="weight"
+                  name="weight"
+                />
+              </div>
+              <!-- PR -->
+              <div class="col-5 form-group mb-3">
+                <label for="personalRecord" class="form-label">PR</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="personalRecord"
+                  name="personalRecord"
+                />
+              </div>
+            </div>
 
             <!-- <div class="mb-3">
           <label for="caption" class="form-label">Caption</label>
