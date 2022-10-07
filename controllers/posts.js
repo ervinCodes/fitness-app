@@ -1,91 +1,21 @@
-const cloudinary = require("../middleware/cloudinary");
 const Workout = require("../models/Workout");
+const Post = require("../models/Post");
 
 module.exports = {
-  getProfile: async (req, res) => {
+  createPost: async (req, res) => {
+    console.log(req.body);
+    console.log(req.user);
     try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("profile.ejs", { user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPlan: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("plan.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getSunday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("sunday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getMonday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("monday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getTuesday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("tuesday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getWednesday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("wednesday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getThursday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("thursday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getFriday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("friday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getSaturday: async (req, res) => {
-    try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("saturday.ejs", { workouts: workouts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getFeed: async (req, res) => {
-    try {
-      const workouts = await Workout.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPost: async (req, res) => {
-    try {
-      const workouts = await Workout.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      await Post.create({
+        title: req.body.title,
+        sets: req.body.sets,
+        reps: req.body.reps,
+        weight: req.body.weight,
+        personalRecord: req.body.personalRecord,
+        userId: req.user,
+      });
+      console.log("Post has been added!");
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
@@ -115,32 +45,57 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  deleteWorkout: async (req, res) => {
+    console.log(req.body.workoutIdFromJSFile);
     try {
-      await Workout.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      await Workout.findOneAndDelete({ _id: req.body.workoutIdFromJSFile });
+      console.log("Deleted Todo");
+      res.json("Deleted It");
     } catch (err) {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  markComplete: async (req, res) => {
     try {
-      // Find post by id
-      let post = await Workout.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
-      // Delete post from db
-      await Workout.remove({ _id: req.params.id });
-      console.log("Deleted Post");
-      res.redirect("/profile");
+      await Workout.findOneAndUpdate(
+        { _id: req.body.workoutIdFromJSFile },
+        {
+          completed: true,
+        }
+      );
+      console.log("Marked Complete");
+      res.json("Marked Complete");
     } catch (err) {
-      res.redirect("/profile");
+      console.log(err);
+    }
+  },
+  markIncomplete: async (req, res) => {
+    try {
+      await Workout.findOneAndUpdate(
+        { _id: req.body.workoutIdFromJSFile },
+        {
+          completed: false,
+        }
+      );
+      console.log("Marked Incomplete");
+      res.json("Marked Incomplete");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  resetWorkout: async (req, res) => {
+    try {
+      await Workout.updateMany(
+        { completed: true }, //specifies what property we want to update
+        // { _id: req.body.workoutIdFromJSFile },
+        {
+          $set: { completed: false }, // sets the value of the property we want it to change to
+        }
+      );
+      console.log("reset");
+      res.json("reset");
+    } catch (err) {
+      console.log(err);
     }
   },
 };

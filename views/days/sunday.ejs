@@ -1,6 +1,7 @@
-<%- include('partials/header') -%>
+<%- include('../partials/header') -%>
 
-<div class="container d-flex justify-content-end">
+<div class="container d-flex justify-content-between">
+  <a class="text-white" href="/plan">Back</a>
   <a class="text-white" href="/logout">Logout</a>
 </div>
 
@@ -12,20 +13,57 @@
       </h2>
     </div>
   </div>
-  <!-- <div class="row d-flex justify-content-center">
-    <a class="btn btn-secondary add-workout-button" href="#" role="button"
-      >Add New Workout</a
-    >
-  </div> -->
+
+  <div class="row text-white">
+      <form action="/post/createPost" method="POST">
+        <ul class="d-flex flex-column align-items-center workout-rows">
+            <% workouts.forEach( el => { %>
+                <% if (el.isSunday) { %>
+                    <li class="pt-3" data-id='<%=el._id%>'>
+                        <span name="title" class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.title %></span>
+                    </li>
+                    <li class="pb-1" data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'>Sets: <%= el.sets %> | </span>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'>Reps: <%= el.reps %> | </span>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'>Weight: <%= el.weight %> | </span>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'>PR: <%= el.personalRecord %></span>
+                    </li>
+                    <li class="pb-3" data-id='<%=el._id%>'>
+                      <div class="row">
+                        <div class="col">
+                            <i class="fa-solid fa-pencil"></i>
+                        </div>
+                        <div class="col">
+                            <i class="fa-solid <%= el.completed === true ? 'fa-square-check' : 'fa-square' %>"></i> 
+                        </div>
+                        <div class="del col">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </div>
+                      </div>
+                    </li>
+                <% } %>
+            <% }) %>    
+        <!-- </ul>
+        <button type="submit" class="btn btn-secondary">Submit</button> -->
+      </form>
+  </div>
+
   <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModalCenter"
-  >
-    Add Workout
-  </button>
+  <div class="row d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-secondary add-workout-button m-1"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModalCenter"
+    >
+      Add Workout
+    </button>
+    <button type="button"
+      class="btn btn-secondary add-workout-button m-1 reset"
+      >
+      <a action="/todos/resetTodo">Reset</a>
+    </button>
+  </div>
 
   <!-- Modal -->
   <div
@@ -90,27 +128,6 @@
                 />
               </div>
             </div>
-
-            <!-- <div class="mb-3">
-          <label for="caption" class="form-label">Caption</label>
-          <textarea
-            class="form-control"
-            id="caption"
-            name="caption"
-          ></textarea>
-        </div> -->
-            <!-- <div class="mb-3">
-          <label for="imgUpload" class="form-label">Image</label>
-          <input
-            type="file"
-            class="form-control"
-            id="imageUpload"
-            name="file"
-          />
-        </div> -->
-            <!-- <button type="submit" class="btn btn-primary" value="Upload">
-          Submit
-        </button> -->
             <button
               type="button"
               class="btn btn-secondary"
@@ -124,6 +141,7 @@
       </div>
     </div>
   </div>
+  <!-- Modal End -->
 </div>
 
-<%- include('partials/footer') -%>
+<%- include('../partials/footer') -%>
