@@ -15,8 +15,17 @@ module.exports = {
   },
   getPlan: async (req, res) => {
     try {
-      const workouts = await Workout.find({ user: req.user.id });
-      res.render("plan.ejs", { workouts: workouts, user: req.user });
+      const workouts = await Workout.find({ userId: req.user.id });
+      const sundayItems = await Workout.countDocuments({
+        userId: req.user.id,
+        completed: false,
+        isSunday: true,
+      });
+      res.render("plan.ejs", {
+        workouts: workouts,
+        user: req.user,
+        sundayItems: sundayItems,
+      });
     } catch (err) {
       console.log(err);
     }

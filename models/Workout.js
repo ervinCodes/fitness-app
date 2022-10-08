@@ -6,11 +6,11 @@ const WorkoutSchema = new mongoose.Schema({
     required: true,
   },
   sets: {
-    type: Number,
+    type: String,
     require: true,
   },
   reps: {
-    type: Number,
+    type: String,
     require: true,
   },
   weight: {
@@ -20,7 +20,7 @@ const WorkoutSchema = new mongoose.Schema({
   },
   personalRecord: {
     // will be on edit
-    type: Number,
+    type: String,
     required: true,
   },
   user: {

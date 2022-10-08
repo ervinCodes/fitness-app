@@ -29,20 +29,19 @@
                         <span class='<%= el.completed === true ? 'completed' : 'not'%>'>PR: <%= el.personalRecord %></span>
                     </li>
                     <li class="pb-3" data-id='<%=el._id%>'>
-                      <div class="row">
-                        <div class="col">
-                            <i class="fa-solid fa-pencil"></i>
-                        </div>
-                        <div class="col">
-                            <i class="fa-solid <%= el.completed === true ? 'fa-square-check' : 'fa-square' %>"></i> 
-                        </div>
-                        <div class="del col">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </div>
-                      </div>
+                      <span>
+                        <a href="" type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editWorkoutModal">
+                          <i class="fa-solid fa-pencil"></i>
+                        </a>
+                      </span>
+                        <i class="pr-2 fa-solid <%= el.completed === true ? 'fa-circle-check' : 'fa-circle' %>"></i>
+                      <span class="del"><i class="fa-regular fa-trash-can"></i></span>
+
                     </li>
                 <% } %>
-            <% }) %>    
+          <% }) %>    
         <!-- </ul>
         <button type="submit" class="btn btn-secondary">Submit</button> -->
       </form>
@@ -65,7 +64,7 @@
     </button>
   </div>
 
-  <!-- Modal -->
+  <!--Add Workout Modal -->
   <div
     class="modal fade"
     id="exampleModalCenter"
@@ -135,11 +134,88 @@
             >
               Close
             </button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-secondary">Save changes</button>
           </form>
         </div>
       </div>
     </div>
+  </div>
+  <!-- Modal End -->
+</div>
+
+
+<!-- Edit Workout Modal -->
+<div
+    class="modal fade"
+    id="editWorkoutModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+  <% workouts.forEach( el => { %>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit Workout</h5>
+        </div>
+        <div class="modal-body">
+          <!-- Form -->
+          <form action="/edit/editSundayWorkout/?_method=PUT" method="POST">
+            <div class="row mb-3 d-flex justify-content-center">
+              <!-- Workout Title -->
+              <div class="col-10">
+                <label for="title" class="form-label"><%= el.title %></label>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <!-- Sets -->
+              <div class="col-5 form-group mb-3">
+                <label for="sets" class="form-label">Sets</label>
+                <input type="text" class="form-control" id="sets" name="sets" />
+              </div>
+              <!-- Repts -->
+              <div class="col-5 form-group mb-3">
+                <label for="reps" class="form-label">Reps</label>
+                <input type="text" class="form-control" id="reps" name="reps" />
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <!-- Weight -->
+              <div class="col-5 form-group mb-3">
+                <label for="weight" class="form-label">Weight</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="weight"
+                  name="weight"
+                />
+              </div>
+              <!-- PR -->
+              <div class="col-5 form-group mb-3">
+                <label for="personalRecord" class="form-label">PR</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="personalRecord"
+                  name="personalRecord"
+                  placeholder="<%= el.personalRecord %>"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-secondary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% }) %>  
   </div>
   <!-- Modal End -->
 </div>

@@ -233,16 +233,20 @@ li {
   /* border: solid 1px red; */
 }
 
-.fa-square {
-  /* color: #b1b1b1; */
-}
-
-.fa-square-check {
-  color: #453e3e;
-}
-
 .fa-pencil {
   color: black;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.fa-circle,
+.fa-circle-check {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.fa-trash-can {
+  cursor: pointer;
 }
 
 .del {

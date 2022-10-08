@@ -14,8 +14,16 @@
     </div>
   </div>
   <div class="row plan-rows">
-    <div class="col-10 align-items-center p-4">
+    <div class="col-2 align-items-center p-4">
       <div class="text-white">Sunday</div>
+    </div>
+    <div
+      class="col-8 d-flex align-items-center justify-content-center text-white"
+    >
+      <img src="../public/css/images/takingNotes.png" alt="Notebook" />
+      <% workouts.forEach( el => { %>
+      <div><%= el.title %></div>
+      <% }) %>
     </div>
     <div class="col-2 d-flex align-items-center">
       <a href="/sunday">
