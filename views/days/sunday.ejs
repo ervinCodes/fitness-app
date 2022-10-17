@@ -29,8 +29,9 @@
                         <span class='<%= el.completed === true ? 'completed' : 'not'%>'>PR: <%= el.personalRecord %></span>
                     </li>
                     <li class="pb-3" data-id='<%=el._id%>'>
+                      <!-- Edit workout trigger modal -->
                       <span>
-                        <a href="" type="button"
+                        <a type="button"
                         data-bs-toggle="modal"
                         data-bs-target="#editWorkoutModal">
                           <i class="fa-solid fa-pencil"></i>
@@ -206,7 +207,8 @@
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
+              aria-label="Close"
             >
               Close
             </button>

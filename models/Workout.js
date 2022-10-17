@@ -15,7 +15,7 @@ const WorkoutSchema = new mongoose.Schema({
   },
   weight: {
     // will be on edit
-    type: Number,
+    type: String,
     required: true,
   },
   personalRecord: {

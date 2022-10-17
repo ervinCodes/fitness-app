@@ -18,12 +18,19 @@
       <div class="text-white">Sunday</div>
     </div>
     <div
-      class="col-8 d-flex align-items-center justify-content-center text-white"
+      class="col-8 d-flex align-items-center justify-content-center text-white flex-wrap"
     >
-      <img src="../public/css/images/takingNotes.png" alt="Notebook" />
-      <% workouts.forEach( el => { %>
-      <div><%= el.title %></div>
-      <% }) %>
+      <!-- <img src="../public/css/images/takingNotes.png" alt="Notebook" /> -->
+      <!-- <% workouts.forEach( el => { %>
+      <div><%= el.title%></div>
+      <% }) %> -->
+      <% for(var i = 0; i <workouts.length; i++) { %> 
+        <% if(i === workouts.length - 1) { %>
+      <div><%= workouts[i].title%> </div>
+      <% } else { %>
+      <div><%=workouts[i].title %>| </div>
+      <div> </div>
+      <% } %> <% } %>
     </div>
     <div class="col-2 d-flex align-items-center">
       <a href="/sunday">
