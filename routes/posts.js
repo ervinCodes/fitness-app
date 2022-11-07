@@ -5,9 +5,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Post Routes - simplified for now
 
-router.post("/createSundayWorkout", postsController.createSundayWorkout);
-
-router.post("/createPost", postsController.createPost);
+// router.post("/createPost", postsController.createPost);
 
 router.put("/markComplete", postsController.markComplete);
 
