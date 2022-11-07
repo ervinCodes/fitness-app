@@ -1,5 +1,17 @@
-<%- include('partials/header') -%>
+<%- include('partials/header') -%> <%- include('partials/navbar') -%>
 
+<div class="container feedSection">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h2 class="text-white">
+        <i>Diary</i>
+      </h2>
+    </div>
+  </div>
 
+  <div class="row feed-rows text-white">
+    <form action="/post/createFeed" method="POST"></form>
+  </div>
+</div>
 
 <%- include('partials/footer') -%>

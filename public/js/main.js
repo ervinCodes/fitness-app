@@ -4,6 +4,7 @@ const workoutComplete = document.querySelectorAll("span.completed");
 const workoutReset = document.querySelectorAll("button.reset");
 const workoutCircle = document.querySelectorAll(".fa-circle");
 const workoutCheck = document.querySelectorAll(".fa-circle-check");
+// let checked = document.querySelectorAll("#checked");
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener("click", deleteWorkout);
@@ -28,6 +29,10 @@ Array.from(workoutCheck).forEach((el) => {
 Array.from(workoutReset).forEach((el) => {
   el.addEventListener("click", resetWorkout);
 });
+
+// Array.from(checked).forEach((el) => {
+//   el.addEventListener("click", getAllChecked);
+// });
 
 async function deleteWorkout() {
   const workoutId = this.parentNode.dataset.id;
@@ -102,3 +107,21 @@ async function resetWorkout() {
     console.log(err);
   }
 }
+
+// async function getAllChecked() {
+//   const checkedId = this.parentNode.dataset.id;
+//   console.log(this);
+//   try {
+//     const response = await fetch("/post/createPost", {
+//       method: "post",
+//       headers: { "Content-type": "application/json" },
+//       body: JSON.stringify({
+//         checkedIdFromJsFile: checkedId,
+//       }),
+//     });
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }

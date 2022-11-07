@@ -1,9 +1,5 @@
 <%- include('partials/header') -%>
-
-<div class="container d-flex justify-content-between">
-  <a class="text-white" href="/profile">Back</a>
-  <a class="text-white" href="/logout">Logout</a>
-</div>
+<%- include('partials/navbar') -%>
 
 <div class="container planSection">
   <div class="row">
@@ -22,14 +18,15 @@
     >
       <!-- <img src="../public/css/images/takingNotes.png" alt="Notebook" /> -->
       <!-- <% workouts.forEach( el => { %>
-      <div><%= el.title%></div>
+      <li data-id="<%=el._id%>">
+        <span><%= el.title%></span>
+      </li>
       <% }) %> -->
       <% for(var i = 0; i <workouts.length; i++) { %> 
         <% if(i === workouts.length - 1) { %>
       <div><%= workouts[i].title%> </div>
       <% } else { %>
       <div><%=workouts[i].title %>| </div>
-      <div> </div>
       <% } %> <% } %>
     </div>
     <div class="col-2 d-flex align-items-center">

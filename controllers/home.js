@@ -7,17 +7,24 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
+      //Since we have a session each request (req) contains the logged-in users info: req.user
+      //console.log(req.user) to see everything
+      //Grabbing just the posts of the logged-in user
       const workouts = await Workout.find({ user: req.user.id });
-      res.render("profile.ejs", { user: req.user });
+      //Sending post data from mongodb and user data to ejs template
+      res.render("profile.ejs", {
+        workouts: workouts,
+        user: req.user,
+      });
     } catch (err) {
       console.log(err);
     }
   },
   getPlan: async (req, res) => {
     try {
-      const workouts = await Workout.find({ userId: req.user.id });
+      const workouts = await Workout.find({ user: req.user.id });
       const sundayItems = await Workout.countDocuments({
-        userId: req.user.id,
+        user: req.user,
         completed: false,
         isSunday: true,
       });
@@ -32,13 +39,13 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find({ userId: req.user.id });
-      const workoutItems = await Post.countDocuments({
-        userId: req.user.id,
+      //Grabbing just the workouts of the logged-in user
+      const workoutItems = await Workout.find({
+        user: req.user.id,
         completed: true,
       });
+      //Sending workout data from mongodb and user data to ejs template
       res.render("feed.ejs", {
-        posts: posts,
         user: req.user,
         workoutItems: workoutItems,
       });
@@ -48,9 +55,9 @@ module.exports = {
   },
   getSunday: async (req, res) => {
     try {
-      const workouts = await Workout.find({ userId: req.user.id });
+      const workouts = await Workout.find({ user: req.user.id });
       const workoutItems = await Workout.countDocuments({
-        userId: req.user.id,
+        user: req.user.id,
         completed: false,
         isSunday: true,
       });

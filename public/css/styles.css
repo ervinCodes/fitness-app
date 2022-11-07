@@ -190,6 +190,13 @@ section {
   /* border: solid 1px white; */
 }
 
+.feed-rows {
+  .plan-rows {
+    background-color: #29648a;
+    border: solid 1px black;
+  }
+}
+
 /******************************************
 /* SUNDAY
 /*******************************************/
@@ -224,12 +231,14 @@ li {
   color: gray;
 }
 
-.add-workout-button {
-  width: 175px;
+.daily-buttons {
+  margin: 0;
+  padding: 0;
 }
 
 .workout-rows {
   background-color: #29648a;
+  padding-left: 0;
   /* border: solid 1px red; */
 }
 

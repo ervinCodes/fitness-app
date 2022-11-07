@@ -2,24 +2,20 @@ const Workout = require("../models/Workout");
 const Post = require("../models/Post");
 
 module.exports = {
-  createPost: async (req, res) => {
-    console.log(req.body);
-    console.log(req.user);
-    try {
-      await Post.create({
-        title: req.body.title,
-        sets: req.body.sets,
-        reps: req.body.reps,
-        weight: req.body.weight,
-        personalRecord: req.body.personalRecord,
-        userId: req.user,
-      });
-      console.log("Post has been added!");
-      res.redirect("/feed");
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // createPost: async (req, res) => {
+  //   console.log(req.body.checkedIdFromJsFile);
+  //   try {
+  //     await Post.create({
+  //       title: req.body.title,
+  //       // likes: 0,
+  //       user: req.user.id,
+  //     });
+  //     console.log("Post has been added!");
+  //     res.redirect("/feed");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   createSundayWorkout: async (req, res) => {
     console.log(req.body);
     try {
@@ -29,7 +25,7 @@ module.exports = {
         reps: req.body.reps,
         weight: req.body.weight,
         personalRecord: req.body.personalRecord,
-        userId: req.user.id,
+        user: req.user.id,
         completed: false,
         isSunday: true,
         isMonday: false,

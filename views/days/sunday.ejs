@@ -1,9 +1,5 @@
 <%- include('../partials/header') -%>
-
-<div class="container d-flex justify-content-between">
-  <a class="text-white" href="/plan">Back</a>
-  <a class="text-white" href="/logout">Logout</a>
-</div>
+<%- include('../partials/navbar') -%>
 
 <div class="container sundaySection">
   <div class="row">
@@ -15,11 +11,12 @@
   </div>
 
   <div class="row text-white">
-      <form action="/post/createPost" method="POST">
         <ul class="d-flex flex-column align-items-center workout-rows">
             <% workouts.forEach( el => { %>
                 <% if (el.isSunday) { %>
                     <li class="pt-3" data-id='<%=el._id%>'>
+                      <!-- <input type="checkbox" id="checked" value="<%= el.title %>" name="title">
+                        <label for="<%= el.title %>" name="title""><%= el.title %></label> -->
                         <span name="title" class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.title %></span>
                     </li>
                     <li class="pb-1" data-id='<%=el._id%>'>
@@ -39,30 +36,39 @@
                       </span>
                         <i class="pr-2 fa-solid <%= el.completed === true ? 'fa-circle-check' : 'fa-circle' %>"></i>
                       <span class="del"><i class="fa-regular fa-trash-can"></i></span>
-
                     </li>
+                    <div class="row d-flex justify-content-center flex-row">
+                      <!-- Submit For Post Button -->
+                      <div class="col">
+                        <button onclick="return getAllChecked()" type="submit" class="btn btn-secondary daily-buttons mb-2">Save</button>
+                      </div>
+                      <!-- Reset Button -->
+                      <div class="col">
+                          <a action="/todos/resetTodo">
+                          <button type="button"
+                          class="btn btn-secondary daily-buttons reset mb-2"
+                          > 
+                          Reset
+                        </button>
+                        </a>
+                      </div>
+                    </div>
                 <% } %>
           <% }) %>    
-        <!-- </ul>
-        <button type="submit" class="btn btn-secondary">Submit</button> -->
-      </form>
-  </div>
+        </ul>
 
-  <!-- Button trigger modal -->
-  <div class="row d-flex justify-content-center">
-    <button
-      type="button"
-      class="btn btn-secondary add-workout-button m-1"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModalCenter"
-    >
-      Add Workout
-    </button>
-    <button type="button"
-      class="btn btn-secondary add-workout-button m-1 reset"
-      >
-      <a action="/todos/resetTodo">Reset</a>
-    </button>
+
+      <div class="row d-flex justify-content-center flex-row m-0">
+        <button
+        type="button"
+        class="btn btn-secondary daily-buttons m-1"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModalCenter"
+        >
+        Add Workout
+      </button>
+      </div>
+      
   </div>
 
   <!--Add Workout Modal -->
@@ -131,7 +137,7 @@
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
             >
               Close
             </button>

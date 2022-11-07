@@ -5,24 +5,24 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  sets: {
-    type: Number,
-    required: true,
-  },
-  reps: {
-    type: Number,
-    required: true,
-  },
-  weight: {
-    // will be on edit
-    type: Number,
-    required: true,
-  },
-  personalRecord: {
-    // will be on edit
-    type: Number,
-    required: true,
-  },
+  // sets: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // reps: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // weight: {
+  //   // will be on edit
+  //   type: Number,
+  //   required: true,
+  // },
+  // personalRecord: {
+  //   // will be on edit
+  //   type: Number,
+  //   required: true,
+  // },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
