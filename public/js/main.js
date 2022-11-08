@@ -38,7 +38,7 @@ async function deleteWorkout() {
   const workoutId = this.parentNode.dataset.id;
   try {
     const response = await fetch("/post/deleteWorkout", {
-      method: "delete",
+      method: "put",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
         workoutIdFromJSFile: workoutId,

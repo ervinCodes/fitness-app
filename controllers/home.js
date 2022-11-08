@@ -55,9 +55,15 @@ module.exports = {
   },
   getSunday: async (req, res) => {
     try {
-      const workouts = await Workout.find({ user: req.user.id });
+      // Grabbing the workouts of the logged-in user
+      const workouts = await Workout.find({
+        user: req.user.id,
+        isDeleted: false,
+      });
+      // Grabbing workout items with the listed requirements
       const workoutItems = await Workout.countDocuments({
         user: req.user.id,
+        isDeleted: false,
         completed: false,
         isSunday: true,
       });

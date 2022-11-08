@@ -37,25 +37,26 @@
                         <i class="pr-2 fa-solid <%= el.completed === true ? 'fa-circle-check' : 'fa-circle' %>"></i>
                       <span class="del"><i class="fa-regular fa-trash-can"></i></span>
                     </li>
-                    <div class="row d-flex justify-content-center flex-row">
-                      <!-- Submit For Post Button -->
-                      <div class="col">
-                        <button onclick="return getAllChecked()" type="submit" class="btn btn-secondary daily-buttons mb-2">Save</button>
-                      </div>
-                      <!-- Reset Button -->
-                      <div class="col">
-                          <a action="/todos/resetTodo">
-                          <button type="button"
-                          class="btn btn-secondary daily-buttons reset mb-2"
-                          > 
-                          Reset
-                        </button>
-                        </a>
-                      </div>
-                    </div>
                 <% } %>
           <% }) %>    
+          <div class="row d-flex justify-content-center flex-row">
+            <!-- Submit For Post Button -->
+            <div class="col">
+              <button type="submit" class="btn btn-secondary daily-buttons mb-2">Save</button>
+            </div>
+            <!-- Reset Button -->
+            <div class="col">
+                <a action="/todos/resetTodo">
+                <button type="button"
+                class="btn btn-secondary daily-buttons reset mb-2"
+                > 
+                Reset
+              </button>
+              </a>
+            </div>
+          </div>
         </ul>
+        
 
 
       <div class="row d-flex justify-content-center flex-row m-0">
