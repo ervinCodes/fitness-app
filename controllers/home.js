@@ -22,9 +22,13 @@ module.exports = {
   },
   getPlan: async (req, res) => {
     try {
-      const workouts = await Workout.find({ user: req.user.id });
+      const workouts = await Workout.find({
+        user: req.user.id,
+        isDeleted: false,
+      });
       const sundayItems = await Workout.countDocuments({
         user: req.user,
+        isDeleted: false,
         completed: false,
         isSunday: true,
       });
@@ -55,7 +59,7 @@ module.exports = {
   },
   getSunday: async (req, res) => {
     try {
-      // Grabbing the workouts of the logged-in user
+      // Grabbing the workouts of the logged-in user and finding items that have the isDeleted:false
       const workouts = await Workout.find({
         user: req.user.id,
         isDeleted: false,
