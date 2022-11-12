@@ -8,9 +8,25 @@
       </h2>
     </div>
   </div>
-
-  <div class="row feed-rows text-white">
-    <form action="/post/createFeed" method="POST"></form>
+  <div class="row">
+    <div class="col">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<post.length; i++) {%>
+          <li class="col justify-content-between mt-5">
+            <a href="/post/<%= post[i]._id%>" class="text-white">
+              <%= post[i].title %>
+            </a>
+            <form
+            action="/post/deletePost/<%= post[i].id %>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          >
+            <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          </form>
+          </li>
+        <% } %>
+        </ul>
+    </div>
   </div>
 </div>
 

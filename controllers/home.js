@@ -43,16 +43,8 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      //Grabbing just the workouts of the logged-in user
-      const workoutItems = await Workout.find({
-        user: req.user.id,
-        completed: true,
-      });
-      //Sending workout data from mongodb and user data to ejs template
-      res.render("feed.ejs", {
-        user: req.user,
-        workoutItems: workoutItems,
-      });
+      const post = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("feed.ejs", { post: post });
     } catch (err) {
       console.log(err);
     }

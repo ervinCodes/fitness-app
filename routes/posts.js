@@ -17,4 +17,10 @@ router.put("/resetWorkout", postsController.resetWorkout);
 
 router.put("/deleteWorkout", postsController.deleteWorkout);
 
+router.get("/:id", ensureAuth, postsController.getPost);
+
+router.put("/likePost/:id", postsController.likePost);
+
+router.delete("/deletePost/:id", postsController.deletePost);
+
 module.exports = router;
