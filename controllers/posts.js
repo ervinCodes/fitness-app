@@ -13,12 +13,11 @@ module.exports = {
       console.log(err);
     }
   },
-  createPost: async (req, res) => {
+  createPersonalBest: async (req, res) => {
     try {
       await Post.create({
-        title: req.body.title,
-        caption: req.body.caption,
-        likes: 0,
+        name: req.body.name,
+        personalRecord: req.body.personalRecord,
         user: req.user.id,
       });
       console.log("Post has been added!");

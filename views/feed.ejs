@@ -1,33 +1,163 @@
 <%- include('partials/header') -%> <%- include('partials/navbar') -%>
 
 <div class="container feedSection">
-  <div class="row">
+  <div class="row pt-5">
     <div class="d-flex justify-content-center">
       <h2 class="text-white">
-        <i>Diary</i>
+        <i>Personal Records</i>
       </h2>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <ul class="row list-unstyled">
+    <div class="col-12 d-flex justify-content-center pt-3">
+      <button
+        type="button"
+        class="btn btn-secondary mb-2 p-1"
+        data-bs-toggle="modal"
+        data-bs-target="#addPersonalBest"
+        >
+        Add Personal Best
+        </button>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <ul class="list-unstyled d-flex flex-column ">
         <% for(var i=0; i<post.length; i++) {%>
-          <li class="col justify-content-between mt-5">
-            <a href="/post/<%= post[i]._id%>" class="text-white">
-              <%= post[i].title %>
-            </a>
-            <form
-            action="/post/deletePost/<%= post[i].id %>?_method=DELETE"
-            method="POST"
-            class="col-3"
-          >
-            <button class="btn btn-primary fa fa-trash" type="submit"></button>
-          </form>
+          <li class="col mt-1 text-white personalBest">
+              <span>
+                <%= post[i].name %>:
+              </span>
+              <span>
+                <%= post[i].personalRecord %>
+              </span>
+              <!-- ========================================================================================================================Edit Trigger Modal ======================================================================================================================== -->
+              <span>
+                <a type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#<%= postById.name %>" 
+                class="triggerEditModal">
+                  <i class="fa-solid fa-pencil"></i>
+                </a>
+              </span>
           </li>
         <% } %>
-        </ul>
+      </ul>
     </div>
   </div>
 </div>
 
 <%- include('partials/footer') -%>
+
+
+  <!-- ================================================================================================================================================Add Personal Best Modal ================================================================================================================================================-->
+  <div
+    class="modal fade"
+    id="addPersonalBest"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="addPersonalBestTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
+        </div>
+        <div class="modal-body">
+          <!-- Form -->
+          <form action="/post/createPersonalBest" method="POST">
+            <div class="row mb-3 d-flex justify-content-center">
+              <!-- Workout Name -->
+              <div class="col-10">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <!-- PR -->
+            <div class="row d-flex justify-content-center pb-4">
+              <div class="col-10">
+                <label for="personalRecord" class="form-label">PR</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="personalRecord"
+                  name="personalRecord"
+                />
+              </div>
+            </div>
+            <!-- Close -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!-- Save Changes -->
+            <button type="submit" class="btn btn-secondary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- ============================================================================================================================================Edit Personal Best Modal ============================================================================================================================================-->
+    <div
+    class="modal fade"
+    id="<%= postById.name %>"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="addPersonalBestTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
+        </div>
+        <div class="modal-body">
+          <!-- Form -->
+          <form action="/post/createPersonalBest" method="POST">
+            <div class="row mb-3 d-flex justify-content-center">
+              <!-- Workout Name -->
+              <div class="col-10">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <!-- PR -->
+            <div class="row d-flex justify-content-center pb-4">
+              <div class="col-10">
+                <label for="personalRecord" class="form-label">PR</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="personalRecord"
+                  name="personalRecord"
+                />
+              </div>
+            </div>
+            <!-- Close -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!-- Save Changes -->
+            <button type="submit" class="btn btn-secondary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -197,6 +197,11 @@ section {
   }
 }
 
+.personalBest {
+  font-size: 15px;
+  max-width: ;
+}
+
 /******************************************
 /* SUNDAY
 /*******************************************/
@@ -243,7 +248,7 @@ li {
 }
 
 .fa-pencil {
-  color: black;
+  color: white;
   padding-right: 20px;
   cursor: pointer;
 }

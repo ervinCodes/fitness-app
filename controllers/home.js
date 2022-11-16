@@ -42,9 +42,16 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
+    console.log(req.user);
     try {
+      const postById = await Post.find({ user: req.user.id });
+      console.log(req.params.id);
       const post = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { post: post });
+      res.render("feed.ejs", {
+        user: req.user.id,
+        post: post,
+        postById: postById,
+      });
     } catch (err) {
       console.log(err);
     }

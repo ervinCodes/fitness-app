@@ -4,7 +4,7 @@ const workoutComplete = document.querySelectorAll("span.completed");
 const workoutReset = document.querySelectorAll("button.reset");
 const workoutCircle = document.querySelectorAll(".fa-circle");
 const workoutCheck = document.querySelectorAll(".fa-circle-check");
-// let checked = document.querySelectorAll("#checked");
+// const editModal = document.querySelectorAll(".triggerEditModal");
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener("click", deleteWorkout);
@@ -30,9 +30,26 @@ Array.from(workoutReset).forEach((el) => {
   el.addEventListener("click", resetWorkout);
 });
 
-// Array.from(checked).forEach((el) => {
-//   el.addEventListener("click", getAllChecked);
+// Array.from(editModal).forEach((el) => {
+//   el.addEventListener("click", triggerEditModal);
 // });
+
+// async function triggerEditModal() {
+//   const workoutId = this.parentNode.dataset.id;
+//   try {
+//     const response = await fetch("/home/getFeed", {
+//       method: "get",
+//       headers: { "Content-type": "application/json" },
+//       body: JSON.stringify({
+//         workoutIdFromJSFile: workoutId,
+//       }),
+//     });
+//     const data = await response.json(); // shows data in console
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
 async function deleteWorkout() {
   const workoutId = this.parentNode.dataset.id;
@@ -44,7 +61,7 @@ async function deleteWorkout() {
         workoutIdFromJSFile: workoutId,
       }),
     });
-    const data = await response.json();
+    const data = await response.json(); // shows data in console
     console.log(data);
     location.reload();
   } catch (err) {
