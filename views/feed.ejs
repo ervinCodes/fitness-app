@@ -33,12 +33,70 @@
               <span>
                 <a type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#<%= postById.name %>" 
+                data-bs-target="#editModal"
+                data-id='<%=post[i]._id%>'
+                data-bs-workouts="<%= post[i].name %>" 
                 class="triggerEditModal">
                   <i class="fa-solid fa-pencil"></i>
                 </a>
               </span>
           </li>
+           <!-- ============================================================================================================================================Edit Personal Best Modal ============================================================================================================================================-->
+           <div
+           class="modal fade"
+           id="editModal"
+           tabindex="-1"
+           role="dialog"
+           aria-labelledby="addPersonalBestTitle"
+           aria-hidden="true"
+         >
+           <div class="modal-dialog modal-dialog-centered" role="document">
+             <div class="modal-content">
+               <div class="modal-header d-flex justify-content-center">
+                 <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
+               </div>
+               <div class="modal-body">
+        
+                 <form action="/post/createPersonalBest" method="POST">
+                   <div class="row mb-3 d-flex justify-content-center">
+                   
+                     <div class="col-10">
+                       <label for="name" class="form-label" id="workout-name">Name</label>
+                       <!-- <input
+                         type="text"
+                         class="form-control"
+                         id="name"
+                         name="name"
+                       /> -->
+                     </div>
+                   </div>
+                
+                   <div class="row d-flex justify-content-center pb-4">
+                     <div class="col-10">
+                       <label for="personalRecord" class="form-label">PR</label>
+                       <input
+                         type="text"
+                         class="form-control"
+                         id="personalRecord"
+                         name="personalRecord"
+                       />
+                     </div>
+                   </div>
+                 
+                   <button
+                     type="button"
+                     class="btn btn-secondary"
+                     data-bs-dismiss="modal"
+                   >
+                     Close
+                   </button>
+             
+                   <button type="submit" class="btn btn-secondary">Save changes</button>
+                 </form>
+               </div>
+             </div>
+           </div>
+         </div>
         <% } %>
       </ul>
     </div>
@@ -106,9 +164,9 @@
   </div>
 
     <!-- ============================================================================================================================================Edit Personal Best Modal ============================================================================================================================================-->
-    <div
+    <!-- <div
     class="modal fade"
-    id="<%= postById.name %>"
+    id="editModal"
     tabindex="-1"
     role="dialog"
     aria-labelledby="addPersonalBestTitle"
@@ -120,12 +178,12 @@
           <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
         </div>
         <div class="modal-body">
-          <!-- Form -->
+
           <form action="/post/createPersonalBest" method="POST">
             <div class="row mb-3 d-flex justify-content-center">
-              <!-- Workout Name -->
+            
               <div class="col-10">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label"><%= post.name %></label>
                 <input
                   type="text"
                   class="form-control"
@@ -134,7 +192,7 @@
                 />
               </div>
             </div>
-            <!-- PR -->
+        
             <div class="row d-flex justify-content-center pb-4">
               <div class="col-10">
                 <label for="personalRecord" class="form-label">PR</label>
@@ -146,7 +204,7 @@
                 />
               </div>
             </div>
-            <!-- Close -->
+          
             <button
               type="button"
               class="btn btn-secondary"
@@ -154,10 +212,10 @@
             >
               Close
             </button>
-            <!-- Save Changes -->
+      
             <button type="submit" class="btn btn-secondary">Save changes</button>
           </form>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

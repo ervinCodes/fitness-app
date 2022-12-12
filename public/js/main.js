@@ -4,7 +4,6 @@ const workoutComplete = document.querySelectorAll("span.completed");
 const workoutReset = document.querySelectorAll("button.reset");
 const workoutCircle = document.querySelectorAll(".fa-circle");
 const workoutCheck = document.querySelectorAll(".fa-circle-check");
-// const editModal = document.querySelectorAll(".triggerEditModal");
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener("click", deleteWorkout);
@@ -72,6 +71,7 @@ async function deleteWorkout() {
 async function markComplete() {
   const workoutId = this.parentNode.dataset.id;
   console.log(this);
+  console.log(workoutId);
   try {
     const response = await fetch("/post/markComplete", {
       method: "put",
@@ -125,20 +125,32 @@ async function resetWorkout() {
   }
 }
 
-// async function getAllChecked() {
-//   const checkedId = this.parentNode.dataset.id;
-//   console.log(this);
-//   try {
-//     const response = await fetch("/post/createPost", {
-//       method: "post",
-//       headers: { "Content-type": "application/json" },
-//       body: JSON.stringify({
-//         checkedIdFromJsFile: checkedId,
-//       }),
-//     });
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+var myModalEl = document.getElementById("editModal");
+
+myModalEl.addEventListener("shown.bs.modal", async function (event) {
+  // Extracting the name of the workout from data-bs-workouts attributes
+  const workoutName = event.relatedTarget.dataset.bsWorkouts;
+  console.log(workoutName);
+  // Extracting DB ID of workout
+  const workoutId = event.relatedTarget.dataset.id;
+  console.log(workoutId);
+
+  // Update modal's content with information related to the workout name
+  fetch(`edit/modalInfo/${workoutId}`)
+    .then((res) =>
+      res.json({
+        method: "get",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          workoutIdFromJSFile: workoutId,
+        }),
+      })
+    )
+    .then((data) => {
+      console.log(data);
+      document.querySelector("#workout-name").innerText = `${data.name}`;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

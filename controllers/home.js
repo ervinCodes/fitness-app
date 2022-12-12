@@ -42,7 +42,6 @@ module.exports = {
     }
   },
   getFeed: async (req, res) => {
-    console.log(req.user);
     try {
       const postById = await Post.find({ user: req.user.id });
       console.log(req.params.id);

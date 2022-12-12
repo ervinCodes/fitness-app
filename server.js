@@ -8,9 +8,13 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
+const bodyParser = require("body-parser");
 const homeRoutes = require("./routes/home");
 const postRoutes = require("./routes/posts");
 const editRoutes = require("./routes/edits");
+const router = require("./routes/home");
+
+app.use(bodyParser.json());
 
 // Use .env file to config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -29,7 +33,7 @@ app.use(express.static("public"));
 
 // Body parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json()); // parses incoming JSON requests and puts the parsed data in req
 
 // Logging
 app.use(logger("dev"));

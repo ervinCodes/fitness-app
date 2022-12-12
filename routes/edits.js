@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const editsController = require("../controllers/edits");
+const editController = require("../controllers/edits");
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.put("/editSundayWorkout", editsController.editSundayWorkout);
+router.get("/modalInfo/:id", ensureAuth, editController.getModalInfo);
 
 module.exports = router;

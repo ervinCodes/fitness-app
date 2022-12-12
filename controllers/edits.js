@@ -1,27 +1,16 @@
 const Workout = require("../models/Workout");
+const Post = require("../models/Post");
 
 module.exports = {
-  editSundayWorkout: async (req, res) => {
-    console.log(req.body);
+  getModalInfo: async (req, res) => {
+    console.log(req);
     try {
-      await Workout.findOneAndUpdate({
-        sets: req.body.sets,
-        reps: req.body.reps,
-        weight: req.body.weight,
-        personalRecord: req.body.personalRecord,
-        user: req.user.id,
-        isDeleted: false,
-        completed: false,
-        isSunday: true,
-        isMonday: false,
-        isTuesday: false,
-        isWednesday: false,
-        isThursday: false,
-        isFriday: false,
-        isSaturday: false,
-      });
-      console.log("Workout has been edited!");
-      res.redirect("/sunday");
+      // Grabbing workouts of the logged-in user
+      const workout = await Post.findById({ _id: req.params.id });
+      // const workout = await Post.findById({
+      //   _id: req.body.workoutIdFromJSFile,
+      // });
+      res.json(workout);
     } catch (err) {
       console.log(err);
     }
