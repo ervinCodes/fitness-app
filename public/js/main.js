@@ -4,6 +4,8 @@ const workoutComplete = document.querySelectorAll("span.completed");
 const workoutReset = document.querySelectorAll("button.reset");
 const workoutCircle = document.querySelectorAll(".fa-circle");
 const workoutCheck = document.querySelectorAll(".fa-circle-check");
+const editBtn = document.querySelectorAll(".editPr");
+
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener("click", deleteWorkout);
@@ -27,6 +29,10 @@ Array.from(workoutCheck).forEach((el) => {
 
 Array.from(workoutReset).forEach((el) => {
   el.addEventListener("click", resetWorkout);
+});
+
+Array.from(editBtn).forEach((el) => {
+  el.addEventListener("click", editModalInfo);
 });
 
 // Array.from(editModal).forEach((el) => {
@@ -108,7 +114,7 @@ async function markIncomplete() {
 
 async function resetWorkout() {
   const workoutId = this.parentNode.dataset.id;
-  console.log(this);
+  // console.log(this);
   try {
     const response = await fetch("/post/resetWorkout", {
       method: "put",
@@ -134,6 +140,8 @@ myModalEl.addEventListener("shown.bs.modal", async function (event) {
   // Extracting DB ID of workout
   const workoutId = event.relatedTarget.dataset.id;
   console.log(workoutId);
+  const dataIdAttribute = document.getElementById("update");
+  console.log(dataIdAttribute)
 
   // Update modal's content with information related to the workout name
   fetch(`edit/modalInfo/${workoutId}`)
@@ -147,10 +155,35 @@ myModalEl.addEventListener("shown.bs.modal", async function (event) {
       })
     )
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       document.querySelector("#workout-name").innerText = `${data.name}`;
+      dataIdAttribute.setAttribute("data-id", `${workoutId}`);
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+async function editModalInfo() {
+  const workoutId = this.parentNode.dataset.id;
+  const inputValue = document.querySelector("input").value;
+  console.log(inputValue)
+  console.log(this);
+  console.log(workoutId);
+  try {
+    const response = await 
+    fetch(`edit/editModalInfo/${workoutId}`, {
+      method: "put",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        workoutIdFromJSFile: workoutId,
+        inputValueFromJSFile: inputValue,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    location.reload();
+  } catch (err) {
+    console.log(err);
+  }
+}

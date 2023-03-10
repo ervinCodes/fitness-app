@@ -1,24 +1,21 @@
+<!-- Navbar -->
 <%- include('partials/header') -%> <%- include('partials/navbar') -%>
 
+<!-- Main Content -->
 <div class="container feedSection">
+  <!-- My PB Header Section-->
   <div class="row pt-5">
+    <!-- Flex Container -->
     <div class="d-flex justify-content-center">
+      <!-- Header Text -->
       <h2 class="text-white">
-        <i>Personal Records</i>
+        <i>My PBs</i>
       </h2>
     </div>
   </div>
+  <!-- Add New PB Section-->
   <div class="row">
-    <div class="col-12 d-flex justify-content-center pt-3">
-      <button
-        type="button"
-        class="btn btn-secondary mb-2 p-1"
-        data-bs-toggle="modal"
-        data-bs-target="#addPersonalBest"
-        >
-        Add Personal Best
-        </button>
-    </div>
+    <!-- Columns of PR's submitted by user -->
     <div class="col-12 d-flex justify-content-center">
       <ul class="list-unstyled d-flex flex-column ">
         <% for(var i=0; i<post.length; i++) {%>
@@ -29,7 +26,7 @@
               <span>
                 <%= post[i].personalRecord %>
               </span>
-              <!-- ========================================================================================================================Edit Trigger Modal ======================================================================================================================== -->
+              <!-- Edit PB Trigger Modal -->
               <span>
                 <a type="button"
                 data-bs-toggle="modal"
@@ -41,7 +38,7 @@
                 </a>
               </span>
           </li>
-           <!-- ============================================================================================================================================Edit Personal Best Modal ============================================================================================================================================-->
+           <!-- Edit PB Modal -->
            <div
            class="modal fade"
            id="editModal"
@@ -49,15 +46,16 @@
            role="dialog"
            aria-labelledby="addPersonalBestTitle"
            aria-hidden="true"
-         >
+            >
            <div class="modal-dialog modal-dialog-centered" role="document">
              <div class="modal-content">
+              <!-- Text Container -->
                <div class="modal-header d-flex justify-content-center">
+                <!-- Header -->
                  <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
                </div>
                <div class="modal-body">
-        
-                 <form action="/post/createPersonalBest" method="POST">
+                  <form action="">
                    <div class="row mb-3 d-flex justify-content-center">
                    
                      <div class="col-10">
@@ -70,7 +68,7 @@
                        /> -->
                      </div>
                    </div>
-                
+                   <a action="/todos/editModalInfo" data-id="0" id="update">
                    <div class="row d-flex justify-content-center pb-4">
                      <div class="col-10">
                        <label for="personalRecord" class="form-label">PR</label>
@@ -82,7 +80,7 @@
                        />
                      </div>
                    </div>
-                 
+                   <!-- Close -->
                    <button
                      type="button"
                      class="btn btn-secondary"
@@ -90,8 +88,11 @@
                    >
                      Close
                    </button>
-             
-                   <button type="submit" class="btn btn-secondary">Save changes</button>
+
+                    <button type="button" class="btn btn-secondary editPr">
+                      Save changes
+                    </button>
+                   </a>
                  </form>
                </div>
              </div>
@@ -106,116 +107,5 @@
 <%- include('partials/footer') -%>
 
 
-  <!-- ================================================================================================================================================Add Personal Best Modal ================================================================================================================================================-->
-  <div
-    class="modal fade"
-    id="addPersonalBest"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="addPersonalBestTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
-        </div>
-        <div class="modal-body">
-          <!-- Form -->
-          <form action="/post/createPersonalBest" method="POST">
-            <div class="row mb-3 d-flex justify-content-center">
-              <!-- Workout Name -->
-              <div class="col-10">
-                <label for="name" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  name="name"
-                />
-              </div>
-            </div>
-            <!-- PR -->
-            <div class="row d-flex justify-content-center pb-4">
-              <div class="col-10">
-                <label for="personalRecord" class="form-label">PR</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="personalRecord"
-                  name="personalRecord"
-                />
-              </div>
-            </div>
-            <!-- Close -->
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <!-- Save Changes -->
-            <button type="submit" class="btn btn-secondary">Save changes</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
-    <!-- ============================================================================================================================================Edit Personal Best Modal ============================================================================================================================================-->
-    <!-- <div
-    class="modal fade"
-    id="editModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="addPersonalBestTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
-        </div>
-        <div class="modal-body">
 
-          <form action="/post/createPersonalBest" method="POST">
-            <div class="row mb-3 d-flex justify-content-center">
-            
-              <div class="col-10">
-                <label for="name" class="form-label"><%= post.name %></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  name="name"
-                />
-              </div>
-            </div>
-        
-            <div class="row d-flex justify-content-center pb-4">
-              <div class="col-10">
-                <label for="personalRecord" class="form-label">PR</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="personalRecord"
-                  name="personalRecord"
-                />
-              </div>
-            </div>
-          
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-      
-            <button type="submit" class="btn btn-secondary">Save changes</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
