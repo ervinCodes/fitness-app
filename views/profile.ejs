@@ -1,32 +1,26 @@
 <%- include('partials/header') -%>
-
-<div class="container d-flex justify-content-end">
+<!-- Logout -->
+<div class="container d-flex justify-content-center">
   <a class="text-white" href="/logout">Logout</a>
 </div>
+<!-- Main Container -->
 <div
   class="container d-flex justify-content-center flex-column align-items-center profileSection"
->
+  >
+  <!-- Welcome User -->
   <div class="row text-white pb-5">
     <h2><i>Welcome <%= user.userName %></i></h2>
   </div>
+  <!-- Flex Container -->
   <div class="row d-flex flex-column align-items-center">
     <div class="row">
+      <!-- Plan Your Week -->
       <a href="/plan" class="d-flex justify-content-center">
         <button
           class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
         >
-          <i class="fa-solid fa-pencil pt-1"></i>
-          Plan Your Week
-          <i class="fa-solid fa-chevron-right pt-1"></i>
-        </button>
-      </a>
-
-      <a href="" class="d-flex justify-content-center">
-        <button
-          class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
-        >
-          <i class="fa-solid fa-bolt-lightning pt-1"></i>
-          Start Next Workout
+        <i class="fa fa-pencil-square pt-1" aria-hidden="true"></i>
+          Your Workout Program
           <i class="fa-solid fa-chevron-right pt-1"></i>
         </button>
       </a>
@@ -39,73 +33,76 @@
           <i class="fa-solid fa-chevron-right pt-1"></i>
         </button>
       </a>
-      <div class="col-12 d-flex justify-content-center pt-3">
-        <!-- Add PB Trigger Modal -->
+      <!-- Add PB Trigger Modal -->
+      <a type="button" 
+        class="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#addPersonalBest">
         <button
-          type="button"
-          class="btn btn-secondary mb-2 p-1"
-          data-bs-toggle="modal"
-          data-bs-target="#addPersonalBest"
-          >
-          Add Personal Best
-        </button> 
-      </div>
-          <!-- Add PB Modal -->
-          <div
-          class="modal fade"
-          id="addPersonalBest"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="addPersonalBestTitle"
-          aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                  <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
-                </div>
-                <div class="modal-body">
-                  <!-- Create New PB Form -->
-                  <form action="/post/createPersonalBest" method="POST">
-                    <div class="row mb-3 d-flex justify-content-center">
-                      <!-- Workout Name -->
-                      <div class="col-10">
-                        <label for="name" class="form-label">Name</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          name="name"
-                        />
-                      </div>
-                    </div>
-                    <!-- PR -->
-                    <div class="row d-flex justify-content-center pb-4">
-                      <div class="col-10">
-                        <label for="personalRecord" class="form-label">PR</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="personalRecord"
-                          name="personalRecord"
-                        />
-                      </div>
-                    </div>
-                    <!-- Close -->
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <!-- Save Changes -->
-                    <button type="submit" class="btn btn-secondary">Save changes</button>
-                  </form>
-                </div>
-              </div>
+          class="profile-buttons p-2 mt-2 mb-2 d-flex justify-content-between"
+        >
+          <i class="fa-solid fa-bolt-lightning pt-1"></i>
+          Add New PB
+          <i class="fa-solid fa-chevron-right pt-1"></i>
+        </button>
+      </a>
+      
+      <!-- Add PB Modal -->
+      <div
+      class="modal fade"
+      id="addPersonalBest"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addPersonalBestTitle"
+      aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+              <h5 class="modal-title" id="addPersonalBest">Personal Best</h5>
             </div>
+            <div class="modal-body">
+              <!-- Create New PB Form -->
+              <form action="/post/createPersonalBest" method="POST">
+                <div class="row mb-3 d-flex justify-content-center">
+                  <!-- Workout Name -->
+                  <div class="col-10">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                    />
+                  </div>
+                </div>
+                <!-- PR -->
+                <div class="row d-flex justify-content-center pb-4">
+                  <div class="col-10">
+                    <label for="personalRecord" class="form-label">PR</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="personalRecord"
+                      name="personalRecord"
+                    />
+                  </div>
+                </div>
+                <!-- Close -->
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <!-- Save Changes -->
+                <button type="submit" class="btn btn-secondary">Save changes</button>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
