@@ -22,8 +22,13 @@ require("dotenv").config({ path: "./config/.env" });
 // Passport config
 require("./config/passport")(passport);
 
-//Connect to DB
-connectDB();
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+      console.log("listening on 2016");
+  })
+})
+
 
 // Use EJS for views
 app.set("view engine", "ejs");
@@ -64,6 +69,6 @@ app.use("/post", postRoutes);
 app.use("/edit", editRoutes);
 
 // Server running
-app.listen(process.env.PORT, () => {
-  console.log("listening on 2016");
-});
+// app.listen(process.env.PORT, () => {
+//   console.log("listening on 2016");
+// });
