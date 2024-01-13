@@ -13,6 +13,7 @@ const homeRoutes = require("./routes/home");
 const postRoutes = require("./routes/posts");
 const editRoutes = require("./routes/edits");
 const router = require("./routes/home");
+const PORT = 2016;
 
 app.use(bodyParser.json());
 
@@ -21,6 +22,13 @@ require("dotenv").config({ path: "./config/.env" });
 
 // Passport config
 require("./config/passport")(passport);
+
+//Connect to the database before listening
+// connectDB().then(() => {
+//   app.listen(process.env.PORT, () => {
+//       console.log("listening on 2016");
+//   })
+// })
 
 
 // Use EJS for views
@@ -68,7 +76,7 @@ app.use("/edit", editRoutes);
 
 //Connect to the database before listening
 connectDB().then(() => {
-  app.listen(process.env.PORT, () => {
+  app.listen(PORT, () => {
       console.log("listening on 2016");
   })
-})
+});
